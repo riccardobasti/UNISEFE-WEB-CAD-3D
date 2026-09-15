@@ -99,6 +99,81 @@ in a modern web browser.
 
 To be defined.
 
+## Technical Comparison
+
+The table below compares the current **UNISEFE CAD 3D v0.0.2 Alpha**
+with established CAD systems.
+
+This is not intended as a claim of overall superiority.
+It compares architectural characteristics and currently available capabilities.
+
+| Area | UNISEFE CAD 3D | Onshape | Autodesk Fusion | Tinkercad | OpenSCAD |
+|---|---|---|---|---|---|
+| Runs directly in browser | Yes | Yes | Yes* | Yes | No |
+| Single static HTML possible | **Yes** | No | No | No | No |
+| Backend required for core CAD | **No** | Yes | Cloud-connected | Yes | No |
+| Native 3D wireframe editing | **Yes** | Yes | Yes | Limited | Script-based |
+| Native lines / arcs / circles | **Yes** | Yes | Yes | Limited | Primarily constructive |
+| XYZ Move / Copy / Rotate / Mirror | **Yes** | Yes | Yes | Partial | Script transformations |
+| Orbit | **Yes** | Yes | Yes | Yes | Yes |
+| Extrude | **Yes** | Yes | Yes | Yes | Yes |
+| Revolve | **Yes** | Yes | Yes | Limited | Yes |
+| 3D dimensions | **Yes** | Yes | Yes | No | No |
+| Screen-space readable dimension text | **Yes** | Yes | Yes | No | No |
+| Automatic coincidence from Δ = 0 | **Yes** | Constraint system | Constraint system | No | Code-defined |
+| Parametric relationships | Early Alpha | Advanced | Advanced | Limited | Advanced / code-based |
+| Surface modelling | Not yet | Advanced | Advanced | Limited | Limited |
+| Solid modelling | Not yet | Advanced | Advanced | Yes | CSG |
+| Boolean solids | Not yet | Advanced | Advanced | Yes | Yes |
+| NURBS / advanced surfaces | No | Yes | Yes | No | No |
+| Assemblies | No | Yes | Yes | No | No |
+| CAM | No | Available | Advanced | No | No |
+| Simulation | No | Available | Advanced | No | No |
+| CAD state directly inspectable as web markup | **Yes** | No | No | No | Source script |
+| Custom geometry logic without external engine | **Yes** | FeatureScript | API / extensions | Limited | **Yes** |
+| Offline standalone file | **Yes** | No | Limited | No | Yes |
+| Current maturity | **Alpha** | Production | Production | Production | Production |
+
+\* Autodesk Fusion now provides browser access for eligible users, while its main platform also remains strongly cloud-connected.
+
+### Architectural Focus
+
+UNISEFE CAD 3D currently does not attempt to match mature commercial CAD
+systems feature-for-feature.
+
+Its experimental focus is different:
+
+- a single geometric space;
+- native XYZ geometry;
+- a self-contained HTML application;
+- no mandatory backend for the CAD core;
+- geometry and state directly represented in the document;
+- minimal separation between 2D and 3D operations;
+- automatic geometric relationships such as coincidence through `Δ = 0`;
+- reuse of fundamental transformations rather than separate modelling engines.
+
+For example:
+
+- **Extrude** is derived from a translation along a plane normal.
+- **Revolve** is derived from rotation around a 3D axis.
+- **3D constraints** can emerge from geometric coincidence.
+- The same Move / Copy / Rotate logic is reused across the 3D environment.
+
+### Current Limitations
+
+UNISEFE CAD 3D is still an Alpha project.
+
+The most important missing areas are currently:
+
+- continuous surface representation;
+- solid representation;
+- robust 3D Boolean operations;
+- general 3D fillet / chamfer;
+- advanced constraint solving;
+- assemblies;
+- manufacturing and simulation workflows.
+
+These limitations are intentional areas of ongoing research rather than hidden capabilities.
 ---
 
 UNISEFE
