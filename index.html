@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="it">
 <!--
-  UNISEFE CAD 3D · v0.0.1 Alpha
+  UNISEFE CAD 3D · v0.0.2 Alpha
 
   ARCHITECTURAL CONTRACT
   - Static HTML defines the user interface.
@@ -16,7 +16,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>UNISEFE CAD 3D · v0.0.1 Alpha</title>
+<title>UNISEFE CAD 3D · v0.0.2 Alpha</title>
 <style>
 :root{--toolbar-h:66px;--panel-w:286px;--mobile-panel-h:300px;--border:#d7d7d7;--bg:#ececec;--surface:#fff;--text:#151515;--muted:#707070}
 *{box-sizing:border-box}html,body{width:100%;height:100%;margin:0}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:var(--bg);overflow:hidden}button,input,select{font:inherit;color:inherit}.cad-app{width:100vw;height:100dvh;display:grid;grid-template-rows:var(--toolbar-h) minmax(0,1fr);min-width:0;overflow:hidden}
@@ -28,11 +28,119 @@
 .cad-rightpanel{width:var(--panel-w);min-width:var(--panel-w);max-width:var(--panel-w);min-height:0;background:#fff;border-left:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}.panel-head{height:42px;min-height:42px;display:flex;align-items:center;justify-content:flex-start;padding:0 10px 0 12px;border-bottom:1px solid #dedede}.panel-title{font-size:12px;font-weight:650;letter-spacing:.02em}.panel-body{flex:1 1 auto;min-height:0;padding:10px 12px;overflow-y:auto;overflow-x:hidden}.panel-section{padding:0 0 12px;margin:0 0 12px;border-bottom:1px solid #ededed}.panel-section:last-child{border-bottom:0}.panel-section h3{margin:0 0 7px;font-size:9px;text-transform:uppercase;color:#777;letter-spacing:.10em;font-weight:650}.field{display:grid;grid-template-columns:76px minmax(0,1fr);align-items:center;gap:7px;min-height:30px;font-size:11px}.field input,.field select{width:100%;min-width:0;height:27px;border:1px solid #d5d5d5;border-radius:4px;padding:0 6px;background:#fff;font-size:11px}.field input[type="checkbox"]{width:16px;height:16px;min-width:16px;padding:0;justify-self:start;accent-color:#111}.cad-panel-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}.cad-panel-actions button{height:29px;border:1px solid var(--border);background:#fff;border-radius:5px;cursor:pointer;font-size:11px}.cad-panel-actions button:hover,.cad-panel-actions button.active{background:#111;color:#fff}.panel-note{font-size:10px;color:var(--muted);line-height:1.4;margin-top:6px}riki-space{display:none}
 @media(max-width:1180px){:root{--panel-w:260px}.cad-toolbar .toolGroup{padding-inline:7px}.field{grid-template-columns:68px minmax(0,1fr)}}
 @media(max-width:900px){:root{--panel-w:238px}.cad-toolbar .toolGroup{padding:15px 5px 3px}.cad-toolbar .toolLabel{left:5px;top:3px;font-size:7px}.cad-toolbar .toolButtons{gap:1px}.cad-toolbar .toolButton{width:27px;min-width:27px;height:27px}.cad-toolbar .toolButton svg{width:15px;height:15px}.cad-stage{padding:6px}.panel-body{padding:8px}.field{grid-template-columns:60px minmax(0,1fr);gap:5px;font-size:10px}.field input,.field select{height:26px;font-size:10px}}
-@media(max-width:720px){:root{--toolbar-h:76px;--mobile-panel-h:min(36dvh,300px)}.cad-toolbar{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:36px;align-content:center;align-items:center;gap:0;height:var(--toolbar-h);min-height:var(--toolbar-h);padding:2px 4px;overflow:hidden;white-space:normal}.cad-toolbar .toolGroup,.cad-toolbar .toolButtons{display:contents}.cad-toolbar .toolLabel{display:none}.cad-toolbar .toolButton{width:100%;min-width:0;height:34px;min-height:34px;border-radius:4px;margin:0}.cad-toolbar .toolButton svg{width:16px;height:16px}.cad-workspace{grid-template-columns:minmax(0,1fr)}.cad-stage{position:absolute;inset:0;padding:4px}.cad-rightpanel{position:absolute;left:0;right:0;bottom:0;top:auto;width:100%;min-width:0;max-width:none;height:var(--mobile-panel-h);border-left:0;border-top:1px solid var(--border);box-shadow:0 -6px 18px rgba(0,0,0,.10);z-index:30}.panel-head{height:36px;min-height:36px;padding:0 10px}.panel-title{font-size:10px}.panel-body{padding:7px 10px calc(8px + env(safe-area-inset-bottom))}.panel-section{padding-bottom:8px;margin-bottom:8px}.panel-section h3{margin-bottom:5px;font-size:8px}.field{grid-template-columns:66px minmax(0,1fr);min-height:27px;font-size:10px}.field input,.field select{height:25px;font-size:10px}.cad-hud{left:5px;right:5px;bottom:calc(var(--mobile-panel-h) + 5px);gap:3px}.cad-chip{padding:3px 5px;font-size:9px;max-width:46vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
-@media(max-width:480px){:root{--toolbar-h:112px;--mobile-panel-h:min(32dvh,250px)}.cad-toolbar{grid-template-columns:repeat(8,minmax(0,1fr));grid-auto-rows:36px;padding:2px 3px}.cad-toolbar .toolButton{height:34px;min-height:34px}.cad-stage{padding:2px}.panel-head{height:32px;min-height:32px}.panel-body{padding:6px 8px calc(7px + env(safe-area-inset-bottom))}.field{grid-template-columns:58px minmax(0,1fr);gap:4px}.cad-hud{bottom:calc(var(--mobile-panel-h) + 4px)}.cad-chip{font-size:8px;padding:2px 4px;max-width:44vw}}
-@media(max-width:360px){:root{--toolbar-h:108px;--mobile-panel-h:min(30dvh,220px)}.cad-toolbar{grid-auto-rows:35px;padding-inline:2px}.cad-toolbar .toolButton{height:33px;min-height:33px}.cad-toolbar .toolButton svg{width:15px;height:15px}.field{grid-template-columns:52px minmax(0,1fr);font-size:9px}.field input,.field select{font-size:9px}.cad-chip:nth-child(3),.cad-chip:nth-child(4){display:none}}
-@media(orientation:landscape) and (max-height:520px) and (max-width:900px){:root{--toolbar-h:74px;--mobile-panel-h:min(42dvh,180px)}.cad-toolbar{grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:35px;padding:2px 4px}.cad-toolbar .toolButton{height:33px;min-height:33px}.panel-head{height:30px;min-height:30px}.panel-body{padding-top:5px}}
-@media print{body{background:#fff}.cad-toolbar,.cad-rightpanel,.cad-hud{display:none!important}.cad-app{display:block;height:auto}.cad-workspace{display:block}.cad-stage{position:fixed;inset:0;padding:0}.cad-surface{position:absolute;inset:0}#cad-native{width:100vw;height:100vh}}
+@media(max-width:720px){
+:root{--toolbar-h:52px;--mobile-panel-h:min(34dvh,280px)}
+.cad-toolbar{display:flex;align-items:center;gap:0;height:var(--toolbar-h);min-height:var(--toolbar-h);padding:0 4px;overflow-x:auto;overflow-y:hidden;white-space:nowrap;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.cad-toolbar .toolGroup{display:flex;position:relative;align-items:center;padding:6px 4px;border-right:1px solid #e8e8e8;flex:0 0 auto}
+.cad-toolbar .toolButtons{display:flex;align-items:center;gap:1px}
+.cad-toolbar .toolLabel{display:none}
+.cad-toolbar .toolButton{width:34px;min-width:34px;height:34px;min-height:34px;border-radius:4px;margin:0;flex:0 0 34px}
+.cad-toolbar .toolButton svg{width:16px;height:16px}
+.cad-workspace{grid-template-columns:minmax(0,1fr)}
+.cad-stage{position:absolute;inset:0;padding:3px}
+.cad-rightpanel{position:absolute;left:0;right:0;bottom:0;top:auto;width:100%;min-width:0;max-width:none;height:var(--mobile-panel-h);border-left:0;border-top:1px solid var(--border);box-shadow:0 -4px 14px rgba(0,0,0,.08);z-index:30}
+.panel-head{height:34px;min-height:34px;padding:0 10px}
+.panel-title{font-size:10px}
+.panel-body{padding:6px 9px calc(7px + env(safe-area-inset-bottom));overscroll-behavior:contain}
+.panel-section{padding-bottom:7px;margin-bottom:7px}
+.panel-section h3{margin-bottom:4px;font-size:8px}
+.field{grid-template-columns:64px minmax(0,1fr);min-height:26px;gap:5px;font-size:10px}
+.field input,.field select{height:25px;font-size:10px}
+.cad-panel-actions{gap:4px}
+.cad-panel-actions button{height:27px;font-size:10px}
+.cad-hud{left:4px;right:4px;bottom:calc(var(--mobile-panel-h) + 4px);gap:3px}
+.cad-chip{padding:3px 5px;font-size:9px;max-width:46vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+}
+@media(max-width:480px){
+:root{--toolbar-h:48px;--mobile-panel-h:min(31dvh,240px)}
+.cad-toolbar{padding:0 2px}
+.cad-toolbar .toolGroup{padding:5px 2px}
+.cad-toolbar .toolButton{width:32px;min-width:32px;height:32px;min-height:32px;flex-basis:32px}
+.cad-toolbar .toolButton svg{width:15px;height:15px}
+.cad-stage{padding:2px}
+.panel-head{height:31px;min-height:31px;padding:0 8px}
+.panel-body{padding:5px 7px calc(6px + env(safe-area-inset-bottom))}
+.field{grid-template-columns:56px minmax(0,1fr);min-height:25px;gap:4px;font-size:9px}
+.field input,.field select{height:24px;font-size:9px}
+.cad-hud{bottom:calc(var(--mobile-panel-h) + 3px)}
+.cad-chip{font-size:8px;padding:2px 4px;max-width:44vw}
+}
+@media(max-width:360px){
+:root{--toolbar-h:46px;--mobile-panel-h:min(29dvh,210px)}
+.cad-toolbar .toolButton{width:30px;min-width:30px;height:30px;min-height:30px;flex-basis:30px}
+.cad-toolbar .toolButton svg{width:14px;height:14px}
+.field{grid-template-columns:50px minmax(0,1fr);font-size:9px}
+.cad-chip:nth-child(3),.cad-chip:nth-child(4){display:none}
+}
+@media(orientation:landscape) and (max-height:520px) and (max-width:900px){
+:root{--toolbar-h:46px;--panel-w:220px}
+.cad-toolbar{display:flex;height:var(--toolbar-h);min-height:var(--toolbar-h);overflow-x:auto;overflow-y:hidden;padding:0 3px}
+.cad-toolbar .toolGroup{display:flex;padding:5px 3px}
+.cad-toolbar .toolButtons{display:flex}
+.cad-toolbar .toolLabel{display:none}
+.cad-toolbar .toolButton{width:31px;min-width:31px;height:31px;min-height:31px;flex-basis:31px}
+.cad-workspace{display:grid;grid-template-columns:minmax(0,1fr) var(--panel-w)}
+.cad-stage{position:relative;inset:auto;padding:2px}
+.cad-rightpanel{position:relative;left:auto;right:auto;bottom:auto;top:auto;width:var(--panel-w);min-width:var(--panel-w);max-width:var(--panel-w);height:auto;min-height:0;border-top:0;border-left:1px solid var(--border);box-shadow:none}
+.panel-head{height:30px;min-height:30px}
+.panel-body{padding:5px 7px calc(5px + env(safe-area-inset-bottom))}
+.panel-section{padding-bottom:5px;margin-bottom:5px}
+.field{grid-template-columns:54px minmax(0,1fr);min-height:24px}
+.field input,.field select{height:23px}
+.cad-hud{bottom:4px;right:calc(var(--panel-w) + 4px)}
+}
+
+/* --- Responsive native properties panel ------------------- */
+.cad-panel-drawer{display:contents}
+.cad-panel-toggle{display:none}
+@media(max-width:900px){
+  .cad-workspace{display:block;position:relative}
+  .cad-stage{position:absolute;inset:0;padding:4px}
+  .cad-panel-drawer{display:block;position:absolute;z-index:42;top:0;right:0;height:100%;width:0;overflow:visible}
+  .cad-panel-drawer>.cad-rightpanel{display:none;position:absolute;top:0;right:0;width:min(86vw,300px);min-width:0;max-width:300px;height:100%;min-height:0;border-left:1px solid var(--border);border-top:0;background:#fff;box-shadow:-8px 0 24px rgba(0,0,0,.14)}
+  .cad-panel-drawer[open]>.cad-rightpanel{display:flex}
+  .cad-panel-toggle{display:flex;position:absolute;z-index:43;right:0;top:50%;transform:translateY(-50%);width:22px;height:92px;padding:6px 3px;border:1px solid var(--border);border-right:0;border-radius:6px 0 0 6px;background:#fff;font-size:8px;font-weight:650;letter-spacing:.08em;writing-mode:vertical-rl;text-orientation:mixed;cursor:pointer;box-shadow:-2px 1px 8px rgba(0,0,0,.07);align-items:center;justify-content:center;list-style:none}
+  .cad-panel-toggle::-webkit-details-marker{display:none}
+  .cad-panel-toggle::marker{content:''}
+  .cad-panel-drawer[open]>.cad-panel-toggle{right:min(86vw,300px)}
+  .panel-head{height:38px;min-height:38px;padding:0 8px 0 11px}
+  .panel-body{padding:8px 10px calc(10px + env(safe-area-inset-bottom));overscroll-behavior:contain}
+  .cad-hud{left:4px;right:4px;bottom:4px}
+}
+@media(max-width:480px){
+  .cad-panel-drawer>.cad-rightpanel{width:min(90vw,286px)}
+  .cad-panel-toggle{height:82px;font-size:7px}
+  .cad-panel-drawer[open]>.cad-panel-toggle{right:min(90vw,286px)}
+  .panel-head{height:35px;min-height:35px}
+}
+@media(orientation:landscape) and (max-height:520px) and (max-width:900px){
+  .cad-stage{position:absolute;inset:0;padding:2px}
+  .cad-panel-drawer>.cad-rightpanel{width:min(48vw,260px);max-width:260px}
+  .cad-panel-drawer[open]>.cad-panel-toggle{right:min(48vw,260px)}
+  .cad-hud{right:4px;bottom:4px}
+}
+
+/* --- One native slide panel at every screen size ---------- */
+.cad-workspace{display:block!important;position:relative!important}
+.cad-stage{position:absolute!important;inset:0!important}
+.cad-panel-drawer{display:block!important;position:absolute!important;z-index:42!important;top:0!important;right:0!important;height:100%!important;width:0!important;overflow:visible!important}
+.cad-panel-drawer>.cad-rightpanel{display:none!important;position:absolute!important;top:0!important;right:0!important;left:auto!important;bottom:auto!important;width:min(86vw,var(--panel-w))!important;min-width:0!important;max-width:var(--panel-w)!important;height:100%!important;min-height:0!important;border-left:1px solid var(--border)!important;border-top:0!important;background:#fff!important;box-shadow:-8px 0 24px rgba(0,0,0,.12)!important}
+.cad-panel-drawer[open]>.cad-rightpanel{display:flex!important}
+.cad-panel-toggle{display:flex!important;position:absolute!important;z-index:43!important;right:0!important;top:50%!important;transform:translateY(-50%)!important;width:22px!important;height:92px!important;padding:6px 3px!important;border:1px solid var(--border)!important;border-right:0!important;border-radius:6px 0 0 6px!important;background:#fff!important;font-size:8px!important;font-weight:650!important;letter-spacing:.08em!important;writing-mode:vertical-rl!important;text-orientation:mixed!important;cursor:pointer!important;box-shadow:-2px 1px 8px rgba(0,0,0,.06)!important;align-items:center!important;justify-content:center!important;list-style:none!important}
+.cad-panel-toggle::-webkit-details-marker{display:none!important}
+.cad-panel-toggle::marker{content:''}
+.cad-panel-drawer[open]>.cad-panel-toggle{right:min(86vw,var(--panel-w))!important}
+.cad-hud{right:4px!important}
+@media(max-width:480px){
+  .cad-panel-drawer>.cad-rightpanel{width:min(90vw,286px)!important;max-width:286px!important}
+  .cad-panel-toggle{height:82px!important;font-size:7px!important}
+  .cad-panel-drawer[open]>.cad-panel-toggle{right:min(90vw,286px)!important}
+}
+@media(orientation:landscape) and (max-height:520px){
+  .cad-panel-drawer>.cad-rightpanel{width:min(48vw,260px)!important;max-width:260px!important}
+  .cad-panel-drawer[open]>.cad-panel-toggle{right:min(48vw,260px)!important}
+}
+@media print{body{background:#fff}.cad-toolbar,.cad-panel-drawer,.cad-hud{display:none!important}.cad-app{display:block;height:auto}.cad-workspace{display:block}.cad-stage{position:fixed;inset:0;padding:0}.cad-surface{position:absolute;inset:0}#cad-native{width:100vw;height:100vh}}
 </style>
 </head>
 <body>
@@ -60,7 +168,7 @@
   </div>
   <div class="toolGroup">
     <div class="toolLabel">DIMENSION</div>
-    <div class="toolButtons"><button class="toolButton" data-cad-name="dim" data-cad-kind="tool" title="Dimension" aria-label="Dimension">
+    <div class="toolButtons"><button class="toolButton" data-cad-name="dim" data-cad-kind="tool" title="3D Dimension · two points + axis/direction" aria-label="3D Dimension">
         <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m8 9-3 3 3 3M16 9l3 3-3 3"/><path d="M5 7v10M19 7v10"/></svg>
       </button><button class="toolButton" data-cad-name="angdim" data-cad-kind="tool" title="Quota angolare" aria-label="Quota angolare">
         <svg viewBox="0 0 24 24"><path d="M5 19 12 6M5 19h14"/><path d="M9 17a5 5 0 0 1 2-4"/><path d="m9 14 2-1-1-2"/></svg>
@@ -99,6 +207,8 @@
     </div>
   </section>
 
+  <details class="cad-panel-drawer">
+    <summary class="cad-panel-toggle" title="Properties">PROPERTIES</summary>
 <aside class="cad-rightpanel" id="rightpanel">
   <div class="panel-head"><div class="panel-title">UNISEFE CAD 3D</div></div>
   <div class="panel-body">
@@ -116,17 +226,18 @@
         <label class="field"><span>Intersection</span><input class="snap-toggle" id="cad-snap-intersection" type="checkbox" checked></label>
         <label class="field"><span>Perpendicular</span><input class="snap-toggle" id="cad-snap-perpendicular" type="checkbox" checked></label>
         <label class="field"><span>Tangent</span><input class="snap-toggle" id="cad-snap-tangent" type="checkbox" checked></label>
-        <label class="field"><span>Text</span><input id="cad-text-size" value="16"></label>
+        <label class="field"><span>Text</span><input id="cad-text-size" value="10"></label>
         <label class="field"><span>Quote dec.</span><input id="cad-dim-decimals" type="number" min="0" max="12" step="1" value="2"></label>
       </section>
     </div>
   </div>
 </aside>
+  </details>
 
 </main>
 </div>
 <!-- ===================== RIKI CANONICAL SPACE ================= -->
-<riki-space id="cad-riki-space" name="RIKI_CAD" version="0.0.1-alpha" canonical="true" continuity="same-space" state="total" relation="simultaneous" byte-input="strict" chain-input="byte-only">
+<riki-space id="cad-riki-space" name="RIKI_CAD" version="0.0.2-alpha" canonical="true" continuity="same-space" state="total" relation="simultaneous" byte-input="strict" chain-input="byte-only">
   <riki-byte name="CONSTITUTION"><riki-value>1</riki-value><riki-bit>1</riki-bit></riki-byte>
   <riki-byte name="SPACE"><riki-value>1</riki-value><riki-bit>1</riki-bit></riki-byte>
   <riki-byte name="CAD"><riki-value>1</riki-value><riki-bit>1</riki-bit></riki-byte>
@@ -144,7 +255,7 @@
   <riki-byte name="CAMERA_TILT"><riki-value>0.5235987755982988</riki-value><riki-bit>1</riki-bit></riki-byte>
   <riki-byte name="WORKPLANE"><riki-value>XY</riki-value><riki-bit>1</riki-bit></riki-byte>
   <riki-byte name="WORK_Z"><riki-value>0</riki-value><riki-bit>1</riki-bit></riki-byte>
-  <riki-byte name="TEXT_SIZE"><riki-value>16</riki-value><riki-bit>1</riki-bit></riki-byte>
+  <riki-byte name="TEXT_SIZE"><riki-value>10</riki-value><riki-bit>1</riki-bit></riki-byte>
   <riki-byte name="DIM_DECIMALS"><riki-value>2</riki-value><riki-bit>1</riki-bit></riki-byte>
   <riki-byte name="LINE_COLOR"><riki-value>#444444</riki-value><riki-bit>1</riki-bit></riki-byte>
   <riki-byte name="LINE_WIDTH"><riki-value>0.55</riki-value><riki-bit>1</riki-bit></riki-byte>
@@ -644,6 +755,16 @@ function closestPointOnLine3D(p,L){
   if(!(l2>1e-24))return null;const t=V3.dot(V3.sub(V3.p(p),a),d)/l2;return{x:a.x+d.x*t,y:a.y+d.y*t,z:a.z+d.z*t,t}
 }
 function displayPoint3D(p){return sceneLocalFromProjected(projectXYZ(V3.p(p)))}
+// Keep dimension glyphs in the screen plane while their anchor remains on the
+// projected 3D dimension geometry. This cancels only the parent camera's 2D
+// linear transform around the text anchor; zoom size is handled separately.
+function screenPlaneTextTransform(x,y){
+  const b=cameraBasis(),a=b.cy,bb=-b.sy*b.ct,c=b.sy,d=b.cy*b.ct,det=a*d-bb*c;
+  if(Math.abs(det)<1e-9)return'';
+  const ia=d/det,ib=-bb/det,ic=-c/det,id=a/det,
+        tx=x-(ia*x+ic*y),ty=y-(ib*x+id*y);
+  return`matrix(${ia} ${ib} ${ic} ${id} ${tx} ${ty})`
+}
 function xyzClosed(p,label='XYZ'){
   if(!p||![p.x,p.y,p.z].every(v=>Number.isFinite(Number(v))))throw Error(`RIKI ${label} requires explicit XYZ`);
   return {x:Number(p.x),y:Number(p.y),z:Number(p.z)}
@@ -788,6 +909,7 @@ function project3DEntities(){for(const e of entities()){
   if(['line','dashline','dashdotline'].includes(e.dataset.kind)){if(e.dataset.x1==null){const a={x:+e.getAttribute('x1'),y:+e.getAttribute('y1'),z:Number(e.dataset.z)||0},b={x:+e.getAttribute('x2'),y:+e.getAttribute('y2'),z:Number(e.dataset.z)||0};setLineWorld(e,a,b)}else projectLineElement(e)}
   else if(e.dataset.kind==='circle'&&e.dataset.cx3!=null)projectCircleElement(e)
   else if(e.dataset.kind==='arc')projectArcElement(e)
+  else if(e.dataset.kind==='dim')updateDim(e)
 }}
 function draw3DAxes(){
   if(!axes3d)return;axes3d.replaceChildren();const vb=svg.viewBox.baseVal,L=Math.max(vb.width,vb.height)*.14||170;
@@ -1045,15 +1167,27 @@ function updateGuideTracking(cursor){
 /* --- Protected Command-Owned Guides ----------------------- */
 function commandGuides(){
   if(!draft||!draft.a)return[];
-  const a=V3.p(draft.a),axes=[
-    {...normGuide(a,{x:a.x+1,y:a.y,z:a.z}),kind:'command-x',source:'command-base-x',protected:true},
-    {...normGuide(a,{x:a.x,y:a.y+1,z:a.z}),kind:'command-y',source:'command-base-y',protected:true},
-    {...normGuide(a,{x:a.x,y:a.y,z:a.z+1}),kind:'command-z',source:'command-base-z',protected:true}
-  ].filter(Boolean);
+  const axisSet=(o,prefix='command')=>{
+    const a=V3.p(o);
+    return [
+      {...normGuide(a,{x:a.x+1,y:a.y,z:a.z}),kind:`${prefix}-x`,source:`${prefix}-axis-x`,protected:true},
+      {...normGuide(a,{x:a.x,y:a.y+1,z:a.z}),kind:`${prefix}-y`,source:`${prefix}-axis-y`,protected:true},
+      {...normGuide(a,{x:a.x,y:a.y,z:a.z+1}),kind:`${prefix}-z`,source:`${prefix}-axis-z`,protected:true}
+    ].filter(Boolean)
+  };
+  const axes=axisSet(draft.a,'command');
   if(['line','dashline','dashdotline'].includes(draft.kind))return axes;
   // Circle uses the same canonical XYZ guides as LINE. During radius and plane choice,
   // pointing on a projected X/Y/Z axis therefore produces the exact 3D guide point.
-  if(draft.kind==='circle'&&(draft.stage==='radius'||draft.stage==='plane'))return axes.map((g,i)=>({...g,kind:['circle-x','circle-y','circle-z'][i],source:['circle-axis-x','circle-axis-y','circle-axis-z'][i]}));
+  if(draft.kind==='circle'&&(draft.stage==='radius'||draft.stage==='plane'))return axisSet(draft.a,'circle');
+  // DIM 3D: while choosing B, the guides originate at A. While choosing C, the
+  // guides originate at B, the last measured point. This keeps the third gesture
+  // geometrically anchored to the point just picked and allows exact X/Y/Z offset
+  // selection without introducing a separate axis selector.
+  if(draft.kind==='dim'){
+    if(draft.stage===1)return axisSet(draft.a,'dim-measure');
+    if(draft.stage===2&&draft.b)return axisSet(draft.b,'dim-offset');
+  }
   return[]
 }
 /* --- Multi-Reference Exact Resolution --------------------- */
@@ -1100,6 +1234,17 @@ function guideEntityIntersectionCandidates(cursor){
   return out;
 }
 /* --- Directional Guide Constraint ------------------------- */
+function dimThirdPointAxisConstraint(cursor){
+  if(!(draft&&draft.kind==='dim'&&draft.stage===2&&draft.b))return null;
+  const gs=commandGuides().filter(g=>String(g.kind||'').startsWith('dim-offset-'));
+  let best=null,bestD=Infinity;
+  for(const g of gs){
+    const q=projectToGuide(cursor,g.a,g.b);if(!q)continue;
+    const d=worldScreenDistance(cursor,q);
+    if(d<bestD){bestD=d;best={point:q,guide:g}}
+  }
+  return best
+}
 function softGuideConstraint(cursor){
   const all=[...commandGuides(),...guideLocks];
   if(!all.length)return null;
@@ -1181,6 +1326,19 @@ function snap(p){
     drawGuides();
     return POINT.close(closedSnap,'POINT.SNAP.GUIDE')
   }
+  // DIM 3D third point: after B, C is not free. It slides on the nearest
+  // X/Y/Z command extension issuing from B. Moving the mouse only chooses which
+  // axis and how far along it; the pointer itself remains on that extension.
+  const dimAxis=dimThirdPointAxisConstraint(p);
+  if(dimAxis){
+    out={x:dimAxis.point.x,y:dimAxis.point.y,z:Number(dimAxis.point.z)||0};
+    const g=dimAxis.guide;
+    guideState={x:null,y:null,point:null,tech:{a:g.a,b:g.b,kind:g.kind}};
+    lastSnapKind='dim-axis-extension';
+    const closedSnap=SNAP.close(out,`SNAP.${g.kind}`);GUIDE.close(closedSnap,`GUIDE.${g.kind}`);
+    drawGuides();
+    return POINT.close(closedSnap,'POINT.DIM.AXIS.EXTENSION')
+  }
   const locked=lockedGuideSnap(p);
   if(locked){
     out={x:locked.point.x,y:locked.point.y,z:Number(locked.point.z)||0};
@@ -1243,7 +1401,7 @@ function view(){
 /* ==================== PERSISTENCE AND HISTORY ============== */
 /* --- Canonical State Serialization ------------------------ */
 function globalBytes(){return Object.fromEntries([...space.querySelectorAll(':scope > riki-byte')].map(b=>[b.getAttribute('name'),Object.freeze({value:b.querySelector('riki-value')?.textContent??'',bit:Number(b.querySelector('riki-bit')?.textContent||0)})]))}
-function state(){syncAllEntityBytes();return{format:'UNISEFE-CAD-RIKI',version:'0.0.1-alpha',chains:'RIKI-BYTE-STRICT',bytes:globalBytes(),drawing:entityStates()}}
+function state(){syncAllEntityBytes();return{format:'UNISEFE-CAD-RIKI',version:'0.0.2-alpha',chains:'RIKI-BYTE-STRICT',bytes:globalBytes(),drawing:entityStates()}}
 function restoreGlobalBytes(bs){
   for(const [k,raw] of Object.entries(bs||{})){
     if(!byte(k))continue;
@@ -1268,7 +1426,7 @@ function applyDrawing(ds){
   paintedSelection.clear();clearSelection();draft=null;selectionDrag=null;syncScreenStyles();view();refresh()
 }
 function restore(d){if(!d||!d.drawing)throw Error();restoreGlobalBytes(d.bytes);applyDrawing(d.drawing);updateCadBit()}
-async function save(){syncAllEntityBytes();const html='<!doctype html>\n'+document.documentElement.outerHTML;if(window.showSaveFilePicker){try{const h=await showSaveFilePicker({suggestedName:'UNISEFE-CAD-3D-v0.0.1-Alpha.html',types:[{description:'HTML',accept:{'text/html':['.html']}}]});const w=await h.createWritable();await w.write(new Blob([html],{type:'text/html'}));await w.close();commandState('save','closed',true);command.textContent='SAVE · UNISEFE CAD 3D v0.0.1 Alpha saved'}catch(e){if(e.name!=='AbortError'){commandState('save','error',false);command.textContent='SAVE · failed'}}}else{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(state())],{type:'application/json'}));a.download='UNISEFE-CAD-3D-v0.0.1-Alpha.riki';a.click();URL.revokeObjectURL(a.href);commandState('save','closed',true)}}
+async function save(){syncAllEntityBytes();const html='<!doctype html>\n'+document.documentElement.outerHTML;if(window.showSaveFilePicker){try{const h=await showSaveFilePicker({suggestedName:'UNISEFE-CAD-3D-v0.0.2-Alpha.html',types:[{description:'HTML',accept:{'text/html':['.html']}}]});const w=await h.createWritable();await w.write(new Blob([html],{type:'text/html'}));await w.close();commandState('save','closed',true);command.textContent='SAVE · UNISEFE CAD 3D v0.0.2 Alpha saved'}catch(e){if(e.name!=='AbortError'){commandState('save','error',false);command.textContent='SAVE · failed'}}}else{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(state())],{type:'application/json'}));a.download='UNISEFE-CAD-3D-v0.0.2-Alpha.riki';a.click();URL.revokeObjectURL(a.href);commandState('save','closed',true)}}
 openProject?.addEventListener('change',()=>{const f=openProject.files?.[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{try{const t=String(rd.result),j=JSON.parse(t);restore(j);commandState('open','closed',true)}catch{commandState('open','error',false);command.textContent='OPEN · invalid RIKI state'}};rd.readAsText(f);openProject.value=''});
 function snapshot(){syncAllEntityBytes();return Object.freeze({drawing:structuredClone(entityStates()),bytes:structuredClone(globalBytes())})}
 function restoreSnapshot(s){if(!s)return;restoreGlobalBytes(s.bytes);applyDrawing(s.drawing||{});updateCadBit()}
@@ -1334,9 +1492,9 @@ function make(kind,a,b,c,text=''){
   if(kind==='circle'){const f=circleFrameFromAngle(a,b,0);return f?makeCircle3D(f):null;}
   if(kind==='arc')return add('path',{d:arcPath(a,b,c),'data-kind':kind,'data-cx':a.x,'data-cy':a.y,'data-cz':Number(a.z)||0,'data-sx':b.x,'data-sy':b.y,'data-sz':Number(b.z)||0,'data-ex':c.x,'data-ey':c.y,'data-ez':Number(c.z)||0,'data-z':Number(a.z)||0});
   if(kind==='text'){const size=num('TEXT_SIZE')||16,e=add('text',{x:a.x,y:a.y,'data-kind':kind,'data-z':Number(a.z)||0,'data-text-size':size,'data-angle':0,'font-size':size/(num('VIEW_SCALE')||1)});setTextPose(e,a.x,a.y,0);e.textContent=text;return e}
-  if(kind==='dim'){saveHistory();const g=S('g',{'data-byte':next(),'data-kind':'dim',class:'entity dimension','data-ax':a.x,'data-ay':a.y,'data-bx':b.x,'data-by':b.y,'data-cx':c.x,'data-cy':c.y});applyLineStyle(g);scene.append(g);indexEntity(g);updateDim(g);setSingleSelection(g.dataset.byte);refresh();return g}
-  if(kind==='angdim'){saveHistory();const g=S('g',{'data-byte':next(),'data-kind':'angdim',class:'entity dimension','data-vx':a.x,'data-vy':a.y,'data-ax':b.x,'data-ay':b.y,'data-bx':c.x,'data-by':c.y,'data-cx':text.x,'data-cy':text.y});applyLineStyle(g);scene.append(g);indexEntity(g);updateAngDim(g);setSingleSelection(g.dataset.byte);refresh();return g}
-  if(kind==='aligndim'){saveHistory();const g=S('g',{'data-byte':next(),'data-kind':'aligndim',class:'entity dimension','data-ax':a.x,'data-ay':a.y,'data-bx':b.x,'data-by':b.y,'data-offset':text?.offset||0});applyLineStyle(g);scene.append(g);indexEntity(g);updateAlignDim(g);setSingleSelection(g.dataset.byte);refresh();return g}
+  if(kind==='dim'){saveHistory();const g=S('g',{'data-byte':next(),'data-kind':'dim',class:'entity dimension','data-ax':a.x,'data-ay':a.y,'data-az':Number(a.z)||0,'data-bx':b.x,'data-by':b.y,'data-bz':Number(b.z)||0,'data-cx':c.x,'data-cy':c.y,'data-cz':Number(c.z)||0});applyLineStyle(g);scene.append(g);indexEntity(g);updateDim(g);setSingleSelection(g.dataset.byte);refresh();return g}
+  if(kind==='angdim'){saveHistory();const g=S('g',{'data-byte':next(),'data-kind':'angdim',class:'entity dimension','data-vx':a.x,'data-vy':a.y,'data-vz':Number(a.z)||0,'data-ax':b.x,'data-ay':b.y,'data-az':Number(b.z)||0,'data-bx':c.x,'data-by':c.y,'data-bz':Number(c.z)||0,'data-cx':text.x,'data-cy':text.y,'data-cz':Number(text.z)||0});applyLineStyle(g);scene.append(g);indexEntity(g);updateAngDim(g);setSingleSelection(g.dataset.byte);refresh();return g}
+  if(kind==='aligndim'){saveHistory();const o=text?.offsetPoint||a,g=S('g',{'data-byte':next(),'data-kind':'aligndim',class:'entity dimension','data-ax':a.x,'data-ay':a.y,'data-az':Number(a.z)||0,'data-bx':b.x,'data-by':b.y,'data-bz':Number(b.z)||0,'data-ox':Number(o.x)||0,'data-oy':Number(o.y)||0,'data-oz':Number(o.z)||0});applyLineStyle(g);scene.append(g);indexEntity(g);updateAlignDim(g);setSingleSelection(g.dataset.byte);refresh();return g}
 }
 function attrs(e,a){for(const[k,v]of Object.entries(a))if(v!=null)e.setAttribute(k,String(v));return e}
 function part(g,tag,name,a={}){
@@ -1348,40 +1506,113 @@ function dimArrowPath(x,y,ux,uy,size){const nx=-uy,ny=ux,back=size,half=size*.42
 function dimArrow(x,y,ux,uy,size,e=null){return attrs(e||S('path'),{d:dimArrowPath(x,y,ux,uy,size)})}
 /* ==================== DIMENSION PROJECTION ================= */
 function updateDim(g){
-  const q={X1:+g.dataset.ax,Y1:+g.dataset.ay,X2:+g.dataset.bx,Y2:+g.dataset.by,X3:+g.dataset.cx,Y3:+g.dataset.cy,VIEW_SCALE:num('VIEW_SCALE')||1},
-        v=CV(['DIM_L','DIM_UX','DIM_UY','DIM_NX','DIM_NY','DIM_QAX','DIM_QAY','DIM_QBX','DIM_QBY','DIM_ARROW','DIM_EXT_AX','DIM_EXT_AY','DIM_EXT_BX','DIM_EXT_BY','DIM_EXT_QAX','DIM_EXT_QAY','DIM_EXT_QBX','DIM_EXT_QBY','DIM_TEXT_X','DIM_TEXT_Y','DIM_READABLE_ANGLE'],q);
-  part(g,'line','ext-a',{x1:v.DIM_EXT_AX,y1:v.DIM_EXT_AY,x2:v.DIM_EXT_QAX,y2:v.DIM_EXT_QAY});
-  part(g,'line','ext-b',{x1:v.DIM_EXT_BX,y1:v.DIM_EXT_BY,x2:v.DIM_EXT_QBX,y2:v.DIM_EXT_QBY});
-  part(g,'line','dim-line',{x1:v.DIM_QAX,y1:v.DIM_QAY,x2:v.DIM_QBX,y2:v.DIM_QBY});
-  dimArrow(v.DIM_QAX,v.DIM_QAY,v.DIM_UX,v.DIM_UY,v.DIM_ARROW,part(g,'path','arrow-a'));
-  dimArrow(v.DIM_QBX,v.DIM_QBY,-v.DIM_UX,-v.DIM_UY,v.DIM_ARROW,part(g,'path','arrow-b'));
-  const t=part(g,'text','text',{x:v.DIM_TEXT_X,y:v.DIM_TEXT_Y,'text-anchor':'middle','dominant-baseline':'middle','font-size':(num('TEXT_SIZE')||16)/(num('VIEW_SCALE')||1),transform:`rotate(${v.DIM_READABLE_ANGLE} ${v.DIM_TEXT_X} ${v.DIM_TEXT_Y})`,class:'dimension-text'});
-  const dv=RESULT.close('DIM',v.DIM_L,'DIMENSION');g.dataset.value=precision(dv);g.dataset.delta=String(get('DIM_DELTA'));g.dataset.bit=String(bit('DIMENSION')?.textContent||0);setEntityBit(g,true);t.textContent=dimensionText(dv)
+  // DIM 3D: A and B are the measured world points. C is the user-selected
+  // axis/offset point. The value is always the exact XYZ distance A-B.
+  const sc=num('VIEW_SCALE')||1,
+        A={x:+g.dataset.ax||0,y:+g.dataset.ay||0,z:+g.dataset.az||0},
+        B={x:+g.dataset.bx||0,y:+g.dataset.by||0,z:+g.dataset.bz||0},
+        Cc={x:+g.dataset.cx||0,y:+g.dataset.cy||0,z:+g.dataset.cz||0},
+        ab=V3.sub(B,A),L=V3.len(ab),u=V3.unit(ab);
+  if(!(L>1e-12)||!u){g.hidden=true;g.dataset.bit='0';setBit('DIMENSION',false);setEntityBit(g,false);return}
+  g.hidden=false;
+  const mid=V3.mul(V3.add(A,B),.5),mc=V3.sub(Cc,mid),along=V3.mul(u,V3.dot(mc,u));
+  let off=V3.sub(mc,along);
+  // While choosing the second point C can still coincide with B. A zero offset
+  // is valid and simply previews the dimension on the measured segment.
+  if(V3.len(off)<1e-12)off={x:0,y:0,z:0};
+  const QA=V3.add(A,off),QB=V3.add(B,off),
+        a2=displayPoint3D(A),b2=displayPoint3D(B),qa=displayPoint3D(QA),qb=displayPoint3D(QB),
+        dx=qb.x-qa.x,dy=qb.y-qa.y,dl=Math.hypot(dx,dy),
+        ux=dl>1e-12?dx/dl:1,uy=dl>1e-12?dy/dl:0,
+        arrow=6/sc,over=3/sc,
+        exa={x:qa.x+(qa.x-a2.x)*0+(qa.x-a2.x),y:qa.y+(qa.y-a2.y)*0+(qa.y-a2.y)},
+        exb={x:qb.x+(qb.x-b2.x)*0+(qb.x-b2.x),y:qb.y+(qb.y-b2.y)*0+(qb.y-b2.y)};
+  // Extension lines start at the true projected points and end on the projected
+  // 3D dimension line. A tiny screen overrun keeps the classical CAD look.
+  const va={x:qa.x-a2.x,y:qa.y-a2.y},vb={x:qb.x-b2.x,y:qb.y-b2.y},
+        la=Math.hypot(va.x,va.y),lb=Math.hypot(vb.x,vb.y),
+        ea={x:qa.x+(la?va.x/la*over:0),y:qa.y+(la?va.y/la*over:0)},
+        eb={x:qb.x+(lb?vb.x/lb*over:0),y:qb.y+(lb?vb.y/lb*over:0)};
+  part(g,'line','ext-a',{x1:a2.x,y1:a2.y,x2:ea.x,y2:ea.y});
+  part(g,'line','ext-b',{x1:b2.x,y1:b2.y,x2:eb.x,y2:eb.y});
+  part(g,'line','dim-line',{x1:qa.x,y1:qa.y,x2:qb.x,y2:qb.y});
+  dimArrow(qa.x,qa.y,ux,uy,arrow,part(g,'path','arrow-a'));
+  dimArrow(qb.x,qb.y,-ux,-uy,arrow,part(g,'path','arrow-b'));
+  const tx=(qa.x+qb.x)/2,ty=(qa.y+qb.y)/2,
+        // Dimension text is screen-space: its anchor follows the 3D geometry,
+        // but glyph orientation and apparent pixel size never follow orbit/zoom.
+        t=part(g,'text','text',{x:tx,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':(num('TEXT_SIZE')||16)/sc,transform:screenPlaneTextTransform(tx,ty),class:'dimension-text'});
+  const dv=RESULT.close('DIM',L,'DIMENSION');g.dataset.value=precision(dv);g.dataset.delta=String(get('DIM_DELTA'));g.dataset.bit=String(bit('DIMENSION')?.textContent||0);setEntityBit(g,true);t.textContent=dimensionText(dv)
 }
 function updateAngDim(g){
-  const q={VX:+g.dataset.vx,VY:+g.dataset.vy,AX:+g.dataset.ax,AY:+g.dataset.ay,BX:+g.dataset.bx,BY:+g.dataset.by,CX:+g.dataset.cx,CY:+g.dataset.cy,VIEW_SCALE:num('VIEW_SCALE')||1},
-        v=CV(['ANG_VALID','ANG_DEG','ANG_RADIUS','ANG_SWEEP','ANG_OVER','ANG_ARROW','ANG_U1X','ANG_U1Y','ANG_U2X','ANG_U2Y','ANG_START_X','ANG_START_Y','ANG_END_X','ANG_END_Y','ANG_T1X','ANG_T1Y','ANG_T2X','ANG_T2Y','ANG_TEXT_X','ANG_TEXT_Y'],q);
-  if(v.ANG_VALID!==1){g.hidden=true;g.dataset.bit='0';setBit('ANGDIMENSION',false);setEntityBit(g,false);return}g.hidden=false;
-  part(g,'line','ray-a',{x1:q.VX+v.ANG_U1X*(2/q.VIEW_SCALE),y1:q.VY+v.ANG_U1Y*(2/q.VIEW_SCALE),x2:q.VX+v.ANG_U1X*(v.ANG_RADIUS+v.ANG_OVER),y2:q.VY+v.ANG_U1Y*(v.ANG_RADIUS+v.ANG_OVER)});
-  part(g,'line','ray-b',{x1:q.VX+v.ANG_U2X*(2/q.VIEW_SCALE),y1:q.VY+v.ANG_U2Y*(2/q.VIEW_SCALE),x2:q.VX+v.ANG_U2X*(v.ANG_RADIUS+v.ANG_OVER),y2:q.VY+v.ANG_U2Y*(v.ANG_RADIUS+v.ANG_OVER)});
-  part(g,'path','arc',{d:`M ${v.ANG_START_X} ${v.ANG_START_Y} A ${v.ANG_RADIUS} ${v.ANG_RADIUS} 0 0 ${v.ANG_SWEEP} ${v.ANG_END_X} ${v.ANG_END_Y}`});
-  dimArrow(v.ANG_START_X,v.ANG_START_Y,v.ANG_T1X,v.ANG_T1Y,v.ANG_ARROW,part(g,'path','arrow-a'));
-  dimArrow(v.ANG_END_X,v.ANG_END_Y,v.ANG_T2X,v.ANG_T2Y,v.ANG_ARROW,part(g,'path','arrow-b'));
-  const t=part(g,'text','text',{x:v.ANG_TEXT_X,y:v.ANG_TEXT_Y,'text-anchor':'middle','dominant-baseline':'middle','font-size':(num('TEXT_SIZE')||16)/(num('VIEW_SCALE')||1),class:'dimension-text'});
-  const av=RESULT.close('ANGDIM',v.ANG_DEG,'ANGDIMENSION');g.dataset.value=precision(av);g.dataset.delta=String(get('ANGDIM_DELTA'));g.dataset.bit=String(bit('ANGDIMENSION')?.textContent||0);setEntityBit(g,true);t.textContent=`${dimensionText(av)}°`
+  // True 3D angular dimension. V is the vertex, A/B define the two rays and C
+  // only selects the radius/placement. Geometry is kept in XYZ and projected.
+  const sc=num('VIEW_SCALE')||1,
+        V={x:+g.dataset.vx||0,y:+g.dataset.vy||0,z:+g.dataset.vz||0},
+        A={x:+g.dataset.ax||0,y:+g.dataset.ay||0,z:+g.dataset.az||0},
+        B={x:+g.dataset.bx||0,y:+g.dataset.by||0,z:+g.dataset.bz||0},
+        Cc={x:+g.dataset.cx||0,y:+g.dataset.cy||0,z:+g.dataset.cz||0},
+        r1=V3.sub(A,V),r2=V3.sub(B,V),u1=V3.unit(r1),u2=V3.unit(r2);
+  if(!u1||!u2){g.hidden=true;g.dataset.bit='0';setBit('ANGDIMENSION',false);setEntityBit(g,false);return}
+  const dot=Math.max(-1,Math.min(1,V3.dot(u1,u2))),cr=V3.cross(u1,u2),sn=V3.len(cr),n=V3.unit(cr);
+  if(!n||sn<1e-12){g.hidden=true;g.dataset.bit='0';setBit('ANGDIMENSION',false);setEntityBit(g,false);return}
+  const vaxis=V3.unit(V3.cross(n,u1)),ang=Math.atan2(sn,dot),deg=ang*180/Math.PI;
+  if(!vaxis||!(ang>1e-12)){g.hidden=true;g.dataset.bit='0';setBit('ANGDIMENSION',false);setEntityBit(g,false);return}
+  g.hidden=false;
+  const vc=V3.sub(Cc,V),cp=V3.sub(vc,V3.mul(n,V3.dot(vc,n)));
+  let radius=V3.len(cp);if(!(radius>1e-9))radius=Math.min(V3.len(r1),V3.len(r2))*.55;
+  if(!(radius>1e-9))radius=20/sc;
+  const over=3/sc,arrow=6/sc,lead=2/sc,
+        start=V3.add(V,V3.mul(u1,radius)),end=V3.add(V,V3.mul(u2,radius)),
+        ra1=V3.add(V,V3.mul(u1,lead)),ra2=V3.add(V,V3.mul(u1,radius+over)),
+        rb1=V3.add(V,V3.mul(u2,lead)),rb2=V3.add(V,V3.mul(u2,radius+over)),
+        pRa1=displayPoint3D(ra1),pRa2=displayPoint3D(ra2),pRb1=displayPoint3D(rb1),pRb2=displayPoint3D(rb2);
+  part(g,'line','ray-a',{x1:pRa1.x,y1:pRa1.y,x2:pRa2.x,y2:pRa2.y});
+  part(g,'line','ray-b',{x1:pRb1.x,y1:pRb1.y,x2:pRb2.x,y2:pRb2.y});
+  // Native circular arc in its true 3D plane. The affine matrix projects that
+  // circle to the correct screen ellipse, including planes containing Z.
+  const Pc=displayPoint3D(V),Pu=displayPoint3D(V3.add(V,V3.mul(u1,radius))),Pv=displayPoint3D(V3.add(V,V3.mul(vaxis,radius))),
+        ex=Math.cos(ang),ey=Math.sin(ang),arc=part(g,'path','arc',{d:`M 1 0 A 1 1 0 0 1 ${ex} ${ey}`,transform:`matrix(${Pu.x-Pc.x} ${Pu.y-Pc.y} ${Pv.x-Pc.x} ${Pv.y-Pc.y} ${Pc.x} ${Pc.y})`});
+  const tangent1=vaxis,tangent2=V3.add(V3.mul(u1,-Math.sin(ang)),V3.mul(vaxis,Math.cos(ang))),
+        ps=displayPoint3D(start),pe=displayPoint3D(end),pts=displayPoint3D(V3.add(start,tangent1)),pte=displayPoint3D(V3.add(end,tangent2)),
+        tsx=pts.x-ps.x,tsy=pts.y-ps.y,tl1=Math.hypot(tsx,tsy)||1,tex=pte.x-pe.x,tey=pte.y-pe.y,tl2=Math.hypot(tex,tey)||1;
+  dimArrow(ps.x,ps.y,tsx/tl1,tsy/tl1,arrow,part(g,'path','arrow-a'));
+  dimArrow(pe.x,pe.y,-tex/tl2,-tey/tl2,arrow,part(g,'path','arrow-b'));
+  const half=ang/2,textDir=V3.add(V3.mul(u1,Math.cos(half)),V3.mul(vaxis,Math.sin(half))),textP=displayPoint3D(V3.add(V,V3.mul(textDir,radius+12/sc))),
+        t=part(g,'text','text',{x:textP.x,y:textP.y,'text-anchor':'middle','dominant-baseline':'middle','font-size':(num('TEXT_SIZE')||16)/sc,transform:screenPlaneTextTransform(textP.x,textP.y),class:'dimension-text'});
+  const av=RESULT.close('ANGDIM',deg,'ANGDIMENSION');g.dataset.value=precision(av);g.dataset.delta=String(get('ANGDIM_DELTA'));g.dataset.bit=String(bit('ANGDIMENSION')?.textContent||0);setEntityBit(g,true);t.textContent=`${dimensionText(av)}°`
 }
 
 function updateAlignDim(g){
-  const q={X1:+g.dataset.ax,Y1:+g.dataset.ay,X2:+g.dataset.bx,Y2:+g.dataset.by,OFFSET:Number(g.dataset.offset)||0,VIEW_SCALE:num('VIEW_SCALE')||1},
-        v=CV(['ALIGN_L','ALIGN_UX','ALIGN_UY','ALIGN_NX','ALIGN_NY','ALIGN_QAX','ALIGN_QAY','ALIGN_QBX','ALIGN_QBY','ALIGN_ARROW','ALIGN_EXT_AX','ALIGN_EXT_AY','ALIGN_EXT_BX','ALIGN_EXT_BY','ALIGN_LINE_X2','ALIGN_LINE_Y2','ALIGN_TEXT_X','ALIGN_TEXT_Y','ALIGN_READABLE_ANGLE'],q);
-  if(!(v.ALIGN_L>1e-9)){g.hidden=true;g.dataset.bit='0';setBit('ALIGNDIMENSION',false);setEntityBit(g,false);return}g.hidden=false;
-  part(g,'line','ext-a',{x1:q.X1,y1:q.Y1,x2:v.ALIGN_EXT_AX,y2:v.ALIGN_EXT_AY,class:'dimension-extension'});
-  part(g,'line','ext-b',{x1:q.X2,y1:q.Y2,x2:v.ALIGN_EXT_BX,y2:v.ALIGN_EXT_BY,class:'dimension-extension'});
-  part(g,'line','dim-line',{x1:v.ALIGN_QAX,y1:v.ALIGN_QAY,x2:v.ALIGN_LINE_X2,y2:v.ALIGN_LINE_Y2});
-  dimArrow(v.ALIGN_QAX,v.ALIGN_QAY,v.ALIGN_UX,v.ALIGN_UY,v.ALIGN_ARROW,part(g,'path','arrow-a'));
-  dimArrow(v.ALIGN_QBX,v.ALIGN_QBY,-v.ALIGN_UX,-v.ALIGN_UY,v.ALIGN_ARROW,part(g,'path','arrow-b'));
-  const t=part(g,'text','text',{x:v.ALIGN_TEXT_X,y:v.ALIGN_TEXT_Y,'text-anchor':'middle','dominant-baseline':'middle','font-size':(num('TEXT_SIZE')||16)/(num('VIEW_SCALE')||1),transform:`rotate(${v.ALIGN_READABLE_ANGLE} ${v.ALIGN_TEXT_X} ${v.ALIGN_TEXT_Y})`,class:'dimension-text'});
-  const lv=RESULT.close('ALIGNDIM',v.ALIGN_L,'ALIGNDIMENSION');g.dataset.value=precision(lv);g.dataset.delta=String(get('ALIGNDIM_DELTA'));g.dataset.bit=String(bit('ALIGNDIMENSION')?.textContent||0);setEntityBit(g,true);t.textContent=dimensionText(lv)
+  // Progressive aligned DIM 3D: A is the fixed origin, B the cumulative point.
+  // O is the world-space placement point chosen once by the user. Its component
+  // perpendicular to A-B defines the dimension plane/offset; the measured value
+  // is always the exact XYZ distance A-B.
+  const sc=num('VIEW_SCALE')||1,
+        A={x:+g.dataset.ax||0,y:+g.dataset.ay||0,z:+g.dataset.az||0},
+        B={x:+g.dataset.bx||0,y:+g.dataset.by||0,z:+g.dataset.bz||0},
+        O={x:+g.dataset.ox||0,y:+g.dataset.oy||0,z:+g.dataset.oz||0},
+        ab=V3.sub(B,A),L=V3.len(ab),u=V3.unit(ab);
+  if(!(L>1e-12)||!u){g.hidden=true;g.dataset.bit='0';setBit('ALIGNDIMENSION',false);setEntityBit(g,false);return}
+  let off=V3.sub(O,A),perp=V3.sub(off,V3.mul(u,V3.dot(off,u)));
+  // If the chosen placement happens to lie on A-B, keep a deterministic plane
+  // from the camera without changing the measured geometry.
+  if(V3.len(perp)<=1e-12){const cb=cameraBasis(),viewN={x:cb.st*cb.cy,y:cb.st*cb.sy,z:cb.ct};perp=V3.cross(viewN,u);if(V3.len(perp)<=1e-12)perp=V3.cross({x:0,y:0,z:1},u);perp=V3.mul(V3.unit(perp)||{x:0,y:1,z:0},12/sc)}
+  const QA=V3.add(A,perp),QB=V3.add(B,perp),
+        a=displayPoint3D(A),b=displayPoint3D(B),qa=displayPoint3D(QA),qb=displayPoint3D(QB),
+        dx=qb.x-qa.x,dy=qb.y-qa.y,dl=Math.hypot(dx,dy),du=dl>1e-12?{x:dx/dl,y:dy/dl}:{x:1,y:0},
+        ox=qa.x-a.x,oy=qa.y-a.y,ol=Math.hypot(ox,oy),on=ol>1e-12?{x:ox/ol,y:oy/ol}:{x:-du.y,y:du.x},
+        over=4/sc,arrow=5/sc,textGap=9/sc,
+        extA={x:qa.x+on.x*over,y:qa.y+on.y*over},extB={x:qb.x+on.x*over,y:qb.y+on.y*over},
+        lineB={x:qb.x+du.x*over,y:qb.y+du.y*over},txt={x:qb.x+on.x*textGap,y:qb.y+on.y*textGap};
+  g.hidden=false;
+  part(g,'line','ext-a',{x1:a.x,y1:a.y,x2:extA.x,y2:extA.y,class:'dimension-extension'});
+  part(g,'line','ext-b',{x1:b.x,y1:b.y,x2:extB.x,y2:extB.y,class:'dimension-extension'});
+  part(g,'line','dim-line',{x1:qa.x,y1:qa.y,x2:lineB.x,y2:lineB.y});
+  dimArrow(qa.x,qa.y,du.x,du.y,arrow,part(g,'path','arrow-a'));
+  dimArrow(qb.x,qb.y,-du.x,-du.y,arrow,part(g,'path','arrow-b'));
+  const t=part(g,'text','text',{x:txt.x,y:txt.y,'text-anchor':'middle','dominant-baseline':'middle','font-size':(num('TEXT_SIZE')||16)/sc,transform:screenPlaneTextTransform(txt.x,txt.y),class:'dimension-text'});
+  const lv=RESULT.close('ALIGNDIM',L,'ALIGNDIMENSION');g.dataset.value=precision(lv);g.dataset.delta=String(get('ALIGNDIM_DELTA'));g.dataset.bit=String(bit('ALIGNDIMENSION')?.textContent||0);setEntityBit(g,true);t.textContent=dimensionText(lv)
 }
 function syncTechSnapControls(){
   for(const [id,name] of [['cad-snap-midpoint','SNAP_MIDPOINT'],['cad-snap-quadrant','SNAP_QUADRANT'],['cad-snap-intersection','SNAP_INTERSECTION'],['cad-snap-perpendicular','SNAP_PERPENDICULAR'],['cad-snap-tangent','SNAP_TANGENT']]){const el=document.getElementById(id);if(el)el.checked=snapOn(name)}
@@ -1430,7 +1661,7 @@ function updateCommand(){
     if(draft.stage==='base'){command.textContent=`${t.toUpperCase()} · punto base`;return}
     if(draft.stage==='to'){command.textContent=`${t.toUpperCase()} · punto destinazione · anteprima`;return}
   }
-  if(t==='dim'&&draft){command.textContent=draft.stage===1?'QUOTA · secondo punto':'QUOTA · posizione linea di quota';return}
+  if(t==='dim'&&draft){command.textContent=draft.stage===1?'QUOTA 3D · secondo punto':'QUOTA 3D · scegli asse/direzione e posizione';return}
   if(t==='angdim'&&draft){command.textContent=draft.stage===1?'QUOTA ANGOLARE · punto prima direzione':draft.stage===2?'QUOTA ANGOLARE · punto seconda direzione':'QUOTA ANGOLARE · posizione arco';return}
   if(t==='aligndim'&&draft){command.textContent=draft.stage==='offset'?'QUOTA ALLINEATA · allontana linea di quota':draft.stage==='points'?'QUOTA ALLINEATA · clicca punti successivi · Esc termina':'QUOTA ALLINEATA · scegli origine';return}
   if(t==='text'&&draft){command.textContent=`TESTO${draft.edit?' MODIFICA':''} · ${draft.buffer||'scrivi...'} · Enter conferma`;return}
@@ -1615,9 +1846,9 @@ function preview(){
     }
     e=g;
   }
-  if(kind==='dim'&&a&&b){const g=S('g',{class:'draft dimension','data-ax':a.x,'data-ay':a.y,'data-bx':b.x,'data-by':b.y,'data-cx':(c||b).x,'data-cy':(c||b).y});updateDim(g);e=g}
-  if(kind==='angdim'&&a&&b&&c){const p=draft.d||c,g=S('g',{class:'draft dimension','data-vx':a.x,'data-vy':a.y,'data-ax':b.x,'data-ay':b.y,'data-bx':c.x,'data-by':c.y,'data-cx':p.x,'data-cy':p.y});updateAngDim(g);e=g}
-  if(kind==='aligndim'&&a&&b){const g=S('g',{class:'draft dimension','data-ax':a.x,'data-ay':a.y,'data-bx':b.x,'data-by':b.y,'data-offset':draft.offset||0});updateAlignDim(g);e=g}
+  if(kind==='dim'&&a&&b){const dc=c||b,g=S('g',{class:'draft dimension','data-ax':a.x,'data-ay':a.y,'data-az':Number(a.z)||0,'data-bx':b.x,'data-by':b.y,'data-bz':Number(b.z)||0,'data-cx':dc.x,'data-cy':dc.y,'data-cz':Number(dc.z)||0});updateDim(g);e=g}
+  if(kind==='angdim'&&a&&b&&c){const p=draft.d||c,g=S('g',{class:'draft dimension','data-vx':a.x,'data-vy':a.y,'data-vz':Number(a.z)||0,'data-ax':b.x,'data-ay':b.y,'data-az':Number(b.z)||0,'data-bx':c.x,'data-by':c.y,'data-bz':Number(c.z)||0,'data-cx':p.x,'data-cy':p.y,'data-cz':Number(p.z)||0});updateAngDim(g);e=g}
+  if(kind==='aligndim'&&a&&b){const o=draft.offsetPoint||a,g=S('g',{class:'draft dimension','data-ax':a.x,'data-ay':a.y,'data-az':Number(a.z)||0,'data-bx':b.x,'data-by':b.y,'data-bz':Number(b.z)||0,'data-ox':Number(o.x)||0,'data-oy':Number(o.y)||0,'data-oz':Number(o.z)||0});updateAlignDim(g);e=g}
   if(kind==='text'&&a){const size=Number(draft.edit?.dataset?.textSize)||num('TEXT_SIZE')||16,t=S('text',{x:a.x,y:a.y,'font-size':size/(num('VIEW_SCALE')||1),class:'draft text-preview'});t.style.fill=draft.edit?styleOf(draft.edit).color:(get('LINE_COLOR')||'#444');t.textContent=draft.buffer||'|';e=t}
   if((kind==='trim'||kind==='extend')&&draft.plan){const p=draft.plan,g=S('g',{class:'draft'}),A=displayPoint3D(p.a),B=displayPoint3D(p.b),I=displayPoint3D(p.ip);g.append(S('line',{x1:A.x,y1:A.y,x2:B.x,y2:B.y,'stroke-width':1.2,'vector-effect':'non-scaling-stroke'}),S('circle',{cx:I.x,cy:I.y,r:4/(num('VIEW_SCALE')||1),fill:'none','stroke-width':.7,'vector-effect':'non-scaling-stroke'}));e=g}
   if(kind==='mirror'){
@@ -1852,14 +2083,14 @@ svg.addEventListener('pointerdown',e=>{
   if(tool==='dim'){if(!draft){draft={kind:'dim',a:p,b:p,c:p,stage:1};preview();refresh()}else if(draft.stage===1){draft.b=p;draft.c=p;draft.stage=2;preview();refresh()}else{draft.c=p;make('dim',draft.a,draft.b,draft.c);clearDraft()}return}
   if(tool==='angdim'){if(!draft){draft={kind:'angdim',a:p,b:p,c:p,d:p,stage:1};preview();refresh()}else if(draft.stage===1){draft.b=p;draft.c=p;draft.d=p;draft.stage=2;preview();refresh()}else if(draft.stage===2){draft.c=p;draft.d=p;draft.stage=3;preview();refresh()}else{draft.d=p;make('angdim',draft.a,draft.b,draft.c,draft.d);clearDraft()}return}
   if(tool==='aligndim'){
-    if(!draft){draft={kind:'aligndim',a:p,b:p,offset:0,stage:'offset'};preview();refresh();return}
+    if(!draft){draft={kind:'aligndim',a:p,b:p,offsetPoint:p,stage:'offset'};preview();refresh();return}
     if(draft.stage==='offset'){
-      draft.offset=C('SIGNED_DIST_Y',{X1:draft.a.x,Y1:draft.a.y,X2:p.x,Y2:p.y});
+      draft.offsetPoint=V3.p(p);
       draft.stage='points';draft.b=draft.a;preview();refresh();return
     }
     draft.b=p;
-    if(C('DIST',{X1:draft.a.x,Y1:draft.a.y,X2:p.x,Y2:p.y})>1e-9)make('aligndim',draft.a,p,null,{offset:draft.offset});
-    draft={kind:'aligndim',a:draft.a,b:p,offset:draft.offset,stage:'points'};preview();refresh();return
+    if(V3.dist(V3.p(draft.a),V3.p(p))>1e-9)make('aligndim',draft.a,p,null,{offsetPoint:draft.offsetPoint});
+    draft={kind:'aligndim',a:draft.a,b:p,offsetPoint:V3.p(draft.offsetPoint),stage:'points'};preview();refresh();return
   }
 });
 svg.addEventListener('pointermove',e=>{
@@ -1879,7 +2110,7 @@ svg.addEventListener('pointermove',e=>{
     else if(draft.kind==='angdim'){if(draft.stage===1){draft.b=p;draft.c=p;draft.d=p}else if(draft.stage===2){draft.c=p;draft.d=p}else draft.d=p}
     else if(draft.kind==='aligndim'){
       if(draft.stage==='offset'){
-        draft.offset=C('SIGNED_DIST_Y',{X1:draft.a.x,Y1:draft.a.y,X2:p.x,Y2:p.y});draft.b={x:C('MOVE_X',{X1:draft.a.x,TX:1}),y:draft.a.y}
+        draft.offsetPoint=V3.p(p);draft.b=V3.add(V3.p(draft.a),{x:1,y:0,z:0})
       }else draft.b=p
     }
     else if(draft.kind==='circle'){
